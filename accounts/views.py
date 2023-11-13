@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required,user_passes_test
 from django.core.exceptions import PermissionDenied
 from .utils import send_verification_email
 from django.contrib.auth.tokens import default_token_generator
+from vendor.models import Vendor
 
 
 # Create your views here.
@@ -193,12 +194,13 @@ def custDashboard(request):
 @login_required(login_url='login')
 @user_passes_test(check_role_vendor)
 def vendorDashboard(request):
-    # With this vendor objects are available only for vendorDashboard.html only
-    # vendor = Vendor.objects.get(user=request.user)
-    # context = {
-    #     'vendor': vendor,
-    # }
-    return render(request, 'accounts/vendorDashboard.html')#context)
+    #With this vendor objects are available only for vendorDashboard.html only
+    # request.user means the logged in user
+    vendor = Vendor.objects.get(user=request.user)
+    context = {
+        'vendor': vendor,
+    }
+    return render(request, 'accounts/vendorDashboard.html', context)
 
 
 # forgot_password
