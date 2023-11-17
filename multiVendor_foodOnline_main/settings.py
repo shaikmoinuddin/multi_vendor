@@ -159,5 +159,3 @@ DEFAULT_FROM_EMAIL = 'foodOnline Marketplace<multi.user0303@gmail.com>'
 
 GOOGLE_API_KEY = config('GOOGLE_API_KEY')
 
-# API_KEY = 'AIzaSyDw__LuuK_QZvK_1UnKvMC5jSCrIFqyKN0'
-# KEY = API_KEY
