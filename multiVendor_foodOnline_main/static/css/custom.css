@@ -19,3 +19,9 @@ input.btn.btn-info{
     font-size: 12px;
     cursor: pointer;
 }
+
+.btn{
+    padding: 2px 1.75em;
+    font-size: 12px;
+    cursor: pointer;
+}
