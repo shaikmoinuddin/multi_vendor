@@ -23,4 +23,14 @@ urlpatterns = [
     # delete category
     path('menu-builder/category/delete/<int:pk>/', views.delete_category, name='delete_category'),
 
+    # add fooditem
+    path('menu-builder/food/add/', views.add_food, name='add_food'),
+
+    # edit fooditem
+    path('menu-builder/food/edit/<int:pk>/', views.edit_food, name='edit_food'),
+
+    # delete fooditem
+    path('menu-builder/food/delete/<int:pk>/', views.delete_food, name='delete_food'),
+
+
 ]
