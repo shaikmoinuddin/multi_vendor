@@ -10,6 +10,7 @@ from django.core.exceptions import PermissionDenied
 from .utils import send_verification_email
 from django.contrib.auth.tokens import default_token_generator
 from vendor.models import Vendor
+from django.template.defaultfilters import slugify
 
 
 # Create your views here.
@@ -29,6 +30,8 @@ def check_role_customer(user):
         return True
     else:
         raise PermissionDenied
+    
+
 
 # customer registration
 def registerUser(request):
@@ -85,7 +88,7 @@ def registerUser(request):
 def registerVendor(request):
     if request.user.is_authenticated:
         messages.warning(request, "You are already logged in")
-        return redirect('dashboard')
+        return redirect('myAccount')
     elif request.method == 'POST':
         form = UserForm(request.POST)
         v_form = VendorForm(request.POST, request.FILES)
@@ -105,6 +108,9 @@ def registerVendor(request):
             # saving the vendor
             Vendor = v_form.save(commit=False)
             Vendor.user = user
+            # slugify the vendor
+            vendor_name = v_form.cleaned_data['vendor_name']+'-'+str(user.id) # slug is unique
+            Vendor.vendor_slug = slugify(vendor_name)
             #retrieving the userprofile
             user_profile = UserProfile.objects.get(user=user)
             Vendor.user_profile = user_profile

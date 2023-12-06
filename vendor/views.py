@@ -91,25 +91,54 @@ def add_category(request):
     if request.method == 'POST':
         form = CategoryForm(request.POST)
         if form.is_valid():
-            # retrieving the category_name
             category_name = form.cleaned_data['category_name']
             category = form.save(commit=False)
-            # retrieving the vendor
             category.vendor = get_vendor(request)
-            # creating a slug
-            category.slug = slugify(category_name)
-            form.save()
+            
+            category.save() # here the category id will be generated
+            category.slug = slugify(category_name)+'-'+str(category.id) # chicken-15
+            category.save()
             messages.success(request, 'Category added successfully!')
             return redirect('menu_builder')
         else:
             print(form.errors)
+
     else:
         form = CategoryForm()
-
     context = {
         'form': form,
     }
     return render(request, 'vendor/add_category.html', context)
+
+
+
+
+
+# @login_required(login_url='login')
+# @user_passes_test(check_role_vendor)
+# def add_category(request):
+#     if request.method == 'POST':
+#         form = CategoryForm(request.POST)
+#         if form.is_valid():
+#             # retrieving the category_name
+#             category_name = form.cleaned_data['category_name']
+#             category = form.save(commit=False)
+#             # retrieving the vendor
+#             category.vendor = get_vendor(request)
+#             # creating a slug
+#             category.slug = slugify(category_name)
+#             form.save()
+#             messages.success(request, 'Category added successfully!')
+#             return redirect('menu_builder')
+#         else:
+#             print(form.errors)
+#     else:
+#         form = CategoryForm()
+
+#     context = {
+#         'form': form,
+#     }
+#     return render(request, 'vendor/add_category.html', context)
 
 # editing category
 @login_required(login_url='login')
@@ -160,20 +189,48 @@ def add_food(request):
             foodtitle = form.cleaned_data['food_title']
             food = form.save(commit=False)
             food.vendor = get_vendor(request)
-            form.slug = slugify(foodtitle)
+            food.slug = slugify(foodtitle)
             form.save()
-            messages.success(request, 'Food Item Added Successfully!')
+            messages.success(request, 'Food Item added successfully!')
             return redirect('fooditems_by_category', food.category.id)
         else:
             print(form.errors)
     else:
         form = FoodItemForm()
-        # shows only logged in user objects(category field)
+        # modify this form
         form.fields['category'].queryset = Category.objects.filter(vendor=get_vendor(request))
     context = {
         'form': form,
     }
     return render(request, 'vendor/add_food.html', context)
+
+
+
+
+
+# @login_required(login_url='login')
+# @user_passes_test(check_role_vendor)
+# def add_food(request):
+#     if request.method == 'POST':
+#         form = FoodItemForm(request.POST, request.FILES)
+#         if form.is_valid():
+#             foodtitle = form.cleaned_data['food_title']
+#             food = form.save(commit=False)
+#             food.vendor = get_vendor(request)
+#             form.slug = slugify(foodtitle)
+#             form.save()
+#             messages.success(request, 'Food Item Added Successfully!')
+#             return redirect('fooditems_by_category', food.category.id)
+#         else:
+#             print(form.errors)
+#     else:
+#         form = FoodItemForm()
+#         # shows only logged in user objects(category field)
+#         form.fields['category'].queryset = Category.objects.filter(vendor=get_vendor(request))
+#     context = {
+#         'form': form,
+#     }
+#     return render(request, 'vendor/add_food.html', context)
 
 
 
