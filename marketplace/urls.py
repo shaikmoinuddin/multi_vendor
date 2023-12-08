@@ -12,8 +12,5 @@ urlpatterns = [
     path('decrease_cart/<int:food_id>/', views.decrease_cart, name='decrease_cart'),
 
     # delete_cart_item
-    #path('delete_cart/<int:cart_id>/', views.delete_cart, name='delete_cart'),
-
-    # delete_cart_item
     path('delete_cart/<int:cart_id>/', views.delete_cart, name='delete_cart'),
 ]

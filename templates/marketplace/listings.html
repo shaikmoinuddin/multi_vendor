@@ -43,6 +43,11 @@
                                             {% if vendor.user_profile.city or vendor.user_profile.state or vendor.user_profile.pin_code %}
 										<span><small class="text-muted">{{vendor.user_profile.city}},{{vendor.user_profile.state}},{{vendor.user_profile.pin_code}}</small></span>
 										{% endif %}
+                                        {% if source_location %}
+                                        <br>
+                                        {% comment %} <span><small>{{vendor.kms}}km away from {{source_location}}</small></span> {% endcomment %}
+                                        <span><small><b>{{vendor_kms}}</b>km away from {{source_location}}</small></span>
+                                        {% endif %}
                                         </div>
                                         <div class="list-option">
 
