@@ -32,5 +32,13 @@ urlpatterns = [
     # delete fooditem
     path('menu-builder/food/delete/<int:pk>/', views.delete_food, name='delete_food'),
 
+    # Opening Hours CRUD
+    path('opening-hours/', views.opening_hours, name='opening_hours'),
+    # add(opening hours)
+    path('opening-hours/add/', views.add_opening_hours, name='add_opening_hours'),
+    # delete(opening hours)
+    path('opening-hours/remove/<int:pk>/', views.remove_opening_hours, name='remove_opening_hours')
+
+
 
 ]
