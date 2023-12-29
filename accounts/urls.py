@@ -29,5 +29,8 @@ urlpatterns = [
 
     # vendor urls
     path('vendor/', include('vendor.urls')),
+
+    # customers urls
+    path('customer/', include('customers.urls')),
     
 ]
