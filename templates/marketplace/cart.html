@@ -76,7 +76,7 @@
                                             <li style="list-style-type:None;">
                                                 Subtotal :
                                                 <span class="price float-right">
-                                                    <span class="currency">Rs/-</span>
+                                                    <span class="currency">$</span>
                                                     <span id="subtotal">{{subtotal}}</span>
                                                 </span>
                                             </li>
@@ -86,7 +86,7 @@
                                                     <li style="list-style-type:None;">
                                                         {{key}} <small>({{i}}%)</small>
                                                         <span class="price float-right">
-                                                            <span class="currency">Rs/-</span>
+                                                            <span class="currency">$</span>
                                                             <span id="tax-{{key}}">{{j}}</span>
                                                         </span>
                                                     </li>
@@ -96,10 +96,11 @@
                                             <li style="list-style-type:None;font-weight:600;">
                                                 Total :
                                                 <span class="price float-right">
-                                                    <span class="currency">Rs/-</span>
+                                                    <span class="currency">$</span>
                                                     <span id="total">{{grand_total}}</span>
                                                 </span>
                                             </li>
+                                            <a href="{% url 'checkout' %}"class="btn btn-danger w-100 p-2 mt-3">PROCEED TO CHECKOUT</a>
                                         </ul>
                                     </div>
                                     
