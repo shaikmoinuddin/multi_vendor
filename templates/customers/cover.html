@@ -25,15 +25,18 @@
                             <div class="text">
                                 {% comment %} <i class="icon-location"></i>
                                 <p>{{user.phone_number}}</p> {% endcomment %}
-                                {% if user_profile.address or user_profile.city or user_profile.pin_code or user_profile.state or user_profile.country %} 
+                                {% if user.email or user_profile.address or user_profile.city or user_profile.pin_code or user_profile.state or user_profile.country %} 
                                 <i class="icon-location"></i>
                                 <p>{{user_profile.address}},<br>
                                     {{user_profile.city}},
                                     {{user_profile.pin_code}}<br>
                                     {{user_profile.state}},
                                     {{user_profile.country}},
-                                    {{user.phone_number}}
                                 </p>
+                                <i class="icon-phone"></i>
+                                <p>{{user.phone_number}}</p>
+                                <i class="icon-envelope"></i>
+                                <p class="ml-1">{{user.email}}</p>
                                 {% endif %}
                             </div>
                         </div>
