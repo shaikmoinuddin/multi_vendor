@@ -135,24 +135,6 @@ def delete_cart(request, cart_id):
             return JsonResponse({'status':'Failed', 'message':'Invalid request'})
 
 
-
-# delete cart item
-# def delete_cart(request, cart_id):
-#     if request.user.is_authenticated:
-#         # ajax request
-#         if request.headers.get('x-requested-with') == 'XMLHttpRequest':
-#             try:
-#                 # checking the cart item exists or not
-#                 cart_item = Cart.objects.get(user=request.user, id=cart_id)
-#                 if cart_item:
-#                     cart_item.delete()
-#                     return JsonResponse({'status': 'success', 'message': 'cart item deleted successfully!', 'cart_counter': get_cart_counter(request)})
-#             except:
-#                 return JsonResponse({'status': 'Failed', 'message': 'cart item does not exist!'})
-#         else:
-#             return JsonResponse({'status':'Failed', 'message':'Invalid request'})
-
-
 # search
 def search(request):
     if not 'address' in request.GET:

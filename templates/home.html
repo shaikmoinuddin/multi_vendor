@@ -5,7 +5,7 @@
 <div class="main-section">
 	<!-- Home Pages Elements Strat -->
 	<!-- Main Search Start -->
-	<div class="page-section nopadding cs-nomargin" style="padding-top: 200px; padding-bottom: 150px; margin-bottom: 0px; background: url({% static 'extra-images/bg-image1.jpg' %}) no-repeat center / cover;">
+	<div class="page-section nopadding cs-nomargin main-search-bar" style="padding-top: 200px; padding-bottom: 150px; margin-bottom: 0px; background: url({% static 'extra-images/bg-image1.jpg' %}) no-repeat center / cover;">
 		<div class="container">
 			<div class="row">
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
@@ -13,8 +13,8 @@
 						<h1 style="font-size: 40px; color: #505050; text-transform: uppercase; line-height: 50px; margin-bottom: 25px; text-align:center;">
 							We are in the business of food<br>our restaurants do</h1>
 						<p style="font-size: 18px; letter-spacing: 1px; color: #505050; text-align:center;">
-							Ridiculus sociosqu
-							cursus neque cursus curae ante scelerisque vehicula.</p>
+							Meet The World Class Restarurants To Taste Your Favourite
+							Dishes.</p>
 					</div>
 				</div>
 				<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 ">
@@ -37,46 +37,6 @@
 													<input type="hidden" name="lat" value="" id="id_latitude"></input>
 													<input type="hidden" name="lng" value="" id="id_longitude"></input>
 												</div>
-												{% comment %} <div class="select-location" id="foodbakery-radius-range333" style="display: none;">
-													<div class="select-popup popup-open">
-														<a id="location_close_popup333" href="javascript:0;" class="location-close-popup">
-															<i class="icon-times"></i></a>
-														<input type="hidden" class="foodbakery-radius" name="foodbakery_radius" value="10">
-														<p>Show with in</p>
-														<input id="ex16b333" type="text" data-value="10" value="10" style="display: none;">
-														<script>
-															jQuery(document).ready(function () {
-																var elem = jQuery("#ex16b333");
-																if (elem.length != "") {
-																	elem.slider({
-																		step: 1,
-																		min: 0,
-																		max: 500,
-																		value: 10,
-																	});
-																	elem.on("slideStop", function () {
-																		var rang_slider_val = elem.val();
-																		jQuery("#ex16b333CurrentSliderValLabel").html(rang_slider_val);
-																		jQuery("#range-hidden-foodbakery-radius333").val(rang_slider_val);
-																		//foodbakery_restaurant_content("333");
-																	});
-																	elem.on("slide", function () {
-																		jQuery("#ex16b333CurrentSliderValLabel").html(elem.val());
-																	});
-																}
-
-																$("#foodbakery_radius_location_open333").click(function () {
-																	$("#foodbakery-radius-range333").show();
-																});
-																$("#location_close_popup333").click(function () {
-																	$("#foodbakery-radius-range333").hide();
-																});
-															});
-														</script>
-														<span>Miles: <span id="ex16b333CurrentSliderValLabel">10</span></span><br>
-														<p class="my-location">of <i class="cs-color icon-location-arrow"></i><a id="foodbakery-geo-location-all" class="cs-color foodbakery-geo-location313324" href="javascript:void(0)">My location</a></p>
-													</div>
-												</div> {% endcomment %}
 											</li>
 										</ul>
 									</div>
@@ -183,10 +143,10 @@
 										<div class="post-title">
 											<h5>
 												<a href="{% url 'vendor_detail' vendor.vendor_slug %}">{{vendor}}</a>
-												{% comment %} <span class="sponsored text-color">Sponsored</span> {% endcomment %}
+												
 											</h5>
 										</div>
-										{% comment %} <address> <span>Type of food : </span> Apple Juice</address> {% endcomment %}
+										
 										{% if vendor.user_profile.city and vendor.user_profile.state and vendor.user_profile.pin_code %}
 										<span>{{vendor.user_profile.city}},{{vendor.user_profile.state}},{{vendor.user_profile.pin_code}}</span>
 										{% endif %}
